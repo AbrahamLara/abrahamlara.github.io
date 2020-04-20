@@ -1,23 +1,30 @@
 import React from "react";
-import logo from "./profile_pic.jpg";
 import "./App.css";
+import { Layout } from "antd";
+import Navbar from "./components/Navbar";
+import { Switch, Route } from "react-router-dom";
+import Main from "./pages/Main";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>My name is Abraham Lara and I'm going to master React!</p>
-        <a
-          className="App-link"
-          href="https://github.com/AbrahamLara"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Check Me Out!
-        </a>
-      </header>
-    </div>
+    <Layout className="App">
+      <Navbar />
+      <Layout.Content className="Content">
+        <Switch>
+          <Route exact path="/">
+            <Main />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/projects">
+            <Projects />
+          </Route>
+        </Switch>
+      </Layout.Content>
+    </Layout>
   );
 }
 
